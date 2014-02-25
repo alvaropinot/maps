@@ -182,6 +182,9 @@ var scrollPercentage;
 var numImages;
 var mobile = false;
 var MOBILE_WIDTH = 585;
+var walkInterval;
+var speed = 1000;
+
 
 $(document).ready(function(){
     if ($(window).width() <= MOBILE_WIDTH){
@@ -225,7 +228,32 @@ $(document).ready(function(){
             }
         }
     });
+
+    //ui play class binding
+    $('.play').click(function () {
+        toggleWalk($('.play'));    
+    });
+
 });
+
+
+//toggles the ui clicked element $e text and sets/unsets the interval for the animation
+function toggleWalk ($e) {
+
+    if(walkInterval === undefined || walkInterval === null){
+
+        walkInterval = setInterval(function () {
+            $(document).scrollTop($(document).scrollTop()+100);
+        }, speed);
+
+        $e.html("stop");
+    }
+    else{
+        clearInterval(walkInterval);
+        $e.html("play");
+    }
+}
+
 
 function setPageHeight(){
     numImages = streetVG.numImages();
@@ -242,6 +270,7 @@ function getScrollDistance(){
     } else if (dist>pageHeight - windowHeight) {
         dist = pageHeight - windowHeight;
     }
+    console.log(dist)
     return dist;
 }
 
