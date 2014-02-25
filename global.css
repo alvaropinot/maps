@@ -338,7 +338,6 @@ a{
     border-left: 8px solid transparent;
     width: 0px;
     height: 0px;
-    /*transition: left 1s ease;*/
     -webkit-transition: left 1s linear;
        -moz-transition: left 1s linear;
         -ms-transition: left 1s linear;

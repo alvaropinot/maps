@@ -270,7 +270,6 @@ function getScrollDistance(){
     } else if (dist>pageHeight - windowHeight) {
         dist = pageHeight - windowHeight;
     }
-    console.log(dist)
     return dist;
 }
 
